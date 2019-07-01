@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string-array name="perfil">
+            <item>Coordinador</item>
+            <item>Profesor</item>
+            <item>Director Académico</item>
+            <item>Director Divisional</item>
+            <item>Dirección de Campos</item>
+
+
+        </string-array>
+</resources>

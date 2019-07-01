@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string-array name="planets_array">
+            <item>Campos clínico ineficiente</item>
+            <item>Falta de respeto de autoridades</item>
+            <item>Falta de respeto de alumnos</item>
+            <item>Docente no se presenta</item>
+            <item>Docente llega tarde</item>
+            <item>Emergencia</item>
+            <item>Accidente</item>
+            <item>Felicitación al docente</item>
+            <item>Falta material</item>
+            <item>Mención honorífica a alumno</item>
+            <item>Accidente</item>
+            <item>Solicitudes de la institución</item>
+            <item>Otros</item>
+        </string-array>
+</resources>

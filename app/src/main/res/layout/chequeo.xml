@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:id="@+id/chequeo"
+                                                   android:layout_height="match_parent">
+
+    <TextView
+            android:text="Bienvenido profesor, por favor,  registra cada uno de los momentos del chequeo de entrada.\n No es necesario registrarse más de una vez  para cada momento."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:id="@+id/textView5" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:textSize="18sp" android:textAlignment="viewStart"
+            android:fontFamily="@font/caviar"/>
+    <Button
+            android:text="1. Realizar Check-In"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:id="@+id/checkIn"
+            android:textColor="@color/blanco"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="64dp" app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+    <Button
+            android:text="2. Realizar Check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/blanco"
+            android:id="@+id/check"
+            android:layout_marginTop="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/checkIn" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <Button
+            android:text="3. Realizar Check-Out"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/blanco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkOut" android:layout_marginTop="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/check" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+</android.support.constraint.ConstraintLayout>

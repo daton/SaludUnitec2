@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/menuchequeo"
+                android:icon="@drawable/palomita"
+                android:title="Checar entrada" />
+        <item
+                android:id="@+id/menuincidencias"
+                android:icon="@drawable/incidencia"
+                android:title="Incidencias" />
+        <item
+                android:id="@+id/menumisasistencias"
+                android:icon="@drawable/usuario_circular"
+                android:title="Mis asistencias"
+        />
+
+        <item
+                android:id="@+id/menuperfil"
+                android:icon="@drawable/candadito"
+                android:title="Cambiar NIP"
+        />
+
+
+    </group>
+
+    <item android:title="Clínicas">
+        <menu>
+            <item
+                    android:id="@+id/reportes"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="Clínicas" />
+
+        </menu>
+    </item>
+
+
+</menu>

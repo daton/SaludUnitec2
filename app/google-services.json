@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "181953839266",
+    "firebase_url": "https://salud-unitec.firebaseio.com",
+    "project_id": "salud-unitec",
+    "storage_bucket": "salud-unitec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181953839266:android:7eece2922a817388",
+        "android_client_info": {
+          "package_name": "org.unitec.saludunitec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181953839266-bt9q84dif4rgemd7i7j46m6cqbu2e6gr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7JUYH-QzGhOMk14Dt-tv8AXUkWUKiscw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181953839266-bt9q84dif4rgemd7i7j46m6cqbu2e6gr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181953839266:android:a2ccda2d2062622e",
+        "android_client_info": {
+          "package_name": "org.unitec.saludunitec2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181953839266-bt9q84dif4rgemd7i7j46m6cqbu2e6gr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7JUYH-QzGhOMk14Dt-tv8AXUkWUKiscw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181953839266-bt9q84dif4rgemd7i7j46m6cqbu2e6gr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
