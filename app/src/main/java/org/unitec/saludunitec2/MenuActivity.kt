@@ -860,3 +860,4 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     }
 }
 
+
