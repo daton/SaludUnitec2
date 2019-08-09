@@ -89,7 +89,7 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
 //Checamos si el rol es de directores, si es asi, pues muy facil!! no mostramos el chequeo
 //ni tampoco mos asistencias
-        if(Globales.estatusPerfil?.perfil?.rol.equals("director-academico")|| Globales?.estatusPerfil?.perfil?.rol.equals("director-divisional")|| Globales.estatusPerfil?.perfil?.rol.equals("direccion-campos")){
+        if(Globales.estatusPerfil?.perfil?.rol.equals("director-academico")|| Globales.estatusPerfil?.perfil?.rol.equals("director-divisional")|| Globales.estatusPerfil?.perfil?.rol.equals("direccion-campos")){
 
             var item=       nav_view.menu.findItem(R.id.menuchequeo);
             item.setVisible(false)
@@ -97,7 +97,7 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             var itemMisAsistencias=nav_view.menu.findItem(R.id.menumisasistencias)
             itemMisAsistencias.setVisible(false)
         }
-        if(Globales?.estatusPerfil?.perfil?.rol.equals("profesor")){
+        if(Globales.estatusPerfil?.perfil?.rol.equals("profesor")){
             var item=       nav_view.menu.findItem(R.id.reportes);
             item.setVisible(false)
         }
