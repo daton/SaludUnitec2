@@ -34,6 +34,11 @@
                     android:icon="@drawable/ic_menu_share"
                     android:title="Clínicas" />
 
+            <item
+                    android:id="@+id/inicio"
+                    android:icon="@drawable/ic_home_black_24dp"
+                    android:title="Inicio" />
+
         </menu>
     </item>
 

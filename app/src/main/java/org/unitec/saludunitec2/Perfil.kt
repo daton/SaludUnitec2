@@ -11,6 +11,7 @@ class Perfil {
     var materno:String?=null
     var idCampoClinico:Int?=null
     var campus:String?=null
+    var token:String?=null
 
 
 }

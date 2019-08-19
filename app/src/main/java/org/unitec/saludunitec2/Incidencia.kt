@@ -11,4 +11,5 @@ class Incidencia {
      var campus:String?=null
      var nombre: String? = null
      var fecha:String?=null
+     var semaforo:String?=null
 }

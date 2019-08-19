@@ -2,20 +2,21 @@ package org.unitec.saludunitec2
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.AsyncTask
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.design.widget.NavigationView
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.navigation.NavigationView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -25,15 +26,17 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import kotlinx.android.synthetic.main.incidencias.*
+import kotlinx.android.synthetic.main.inicio.*
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
 
 import java.util.*
 
-class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener,
+class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private var mylocation: Location? = null
@@ -262,6 +265,71 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             TareaActualizarPerfil(applicationContext, Globales.estatusPerfil?.perfil,estatus,this).execute(null,null,null)
         }
 
+        //Inicia con INICIO
+        ocultarTodo()
+        inicio.visibility=View.VISIBLE
+
+//Primero vemos si el EL PERFIL ES COORDINADOR, EL CUAL SOLO RECIBE ALTERTAS
+
+        //Checamos si ya existe el registro del token
+
+        if(Globales.estatusPerfil?.perfil?.rol.equals("coordinador")) {
+            val sharedPreference = getSharedPreferences("PREFERENCIA_TOKEN", Context.MODE_PRIVATE)
+            //El valor jajaja es de defecto, si no existe uno guardaardo se evalua ese es decir si se
+            //cumple no se ha registrado
+            var tokenRecuperado = sharedPreference.getString("token", "jaja")
+            if (tokenRecuperado != "jaja") {
+
+                //En caso de remover el token usa los siguentes 3
+                var editor = sharedPreference.edit()
+                editor.clear()
+                editor.remove("token").apply()
+
+                Toast.makeText(
+                    this,
+                    "Ya estas registrado con " + tokenRecuperado,
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                // Initializar el Dialog de las alertas
+                val builder = AlertDialog.Builder(this@MenuActivity)
+                    .setTitle("Registro de Alertas")
+                    .setMessage("¿Deseas  recibir alertas de incidencias?")
+                    .setPositiveButton("SI") { dialog, which ->
+
+                        //Tarea del registro de token KEMOCION!!!!
+                 var token=       FirebaseInstanceId.getInstance().token
+                      //  Toast.makeText(this,"Token "+ token,Toast.LENGTH_LONG).show()
+                        Globales.estatusPerfil?.perfil?.token=token
+                        TareaGuardarToken(this,token,this).execute().get()
+
+
+                        //Deespues guardamos
+                        val sharedPreference =
+                           getSharedPreferences("PREFERENCIA_TOKEN", Context.MODE_PRIVATE)
+                       var editor = sharedPreference.edit()
+                        editor.putString("token", token)
+                       //editor.putInt("campus", Globales.estatusPerfil.perfil.campus)
+                       editor.apply()
+
+                    }.setNegativeButton("No") { dialog, which ->
+                        Toast.makeText(
+                            applicationContext,
+                            "No recibiras alertas, puedes acativarlo la próxima autenticación",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                val dialog: AlertDialog = builder.create()
+
+                dialog.show()
+            }
+
+
+        }//AQUI TERMINA EL CHEQUEO QUE IMPLICA QUE ESTE ES COORDINADOR Y PUEDE REGISTRARSE PARA ALERTAS
+
+
+
     }
 
     override fun onBackPressed() {
@@ -296,6 +364,12 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         // Handle navigation view item clicks here.
         // Handle navigation view item clicks here.
         when (item.itemId) {
+
+            R.id.inicio->{
+                ocultarTodo()
+                inicio.visibility=View.VISIBLE
+
+            }
             R.id.menuchequeo -> {
                 // Handle the camera action
                 ocultarTodo()
@@ -373,6 +447,8 @@ class MenuActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         val coordinadores = findViewById(R.id.coordinadores) as ConstraintLayout
         val reportes=findViewById(R.id.reportes) as ConstraintLayout
         val perfil=findViewById(R.id.perfil) as ConstraintLayout
+
+        inicio.visibility=View.INVISIBLE
 
 
         principal.visibility = View.INVISIBLE
