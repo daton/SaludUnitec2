@@ -8,10 +8,11 @@
 
     <TextView
             android:id="@+id/textView8"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="78dp"
-            android:text="Semáforo de incidencias"
+            android:text="Nombre de la incidencia:"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,4 +31,55 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+            android:id="@+id/textoNombreInci"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:text="TextView"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <RadioGroup
+            android:id="@+id/radios"
+            android:layout_width="126dp"
+            android:layout_height="143dp"
+            android:layout_marginTop="26dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoNombreInci">
+
+        <RadioButton
+                android:id="@+id/radioRojo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Rojo"
+                android:textColor="@android:color/holo_red_dark" />
+
+        <RadioButton
+                android:id="@+id/radioAmbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="Ambar"
+                android:textColor="@android:color/holo_orange_light" />
+
+        <RadioButton
+                android:id="@+id/radioVerde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="Verde"
+                android:textColor="@android:color/holo_green_dark" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

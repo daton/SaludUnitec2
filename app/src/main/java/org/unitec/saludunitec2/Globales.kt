@@ -9,4 +9,6 @@ object Globales {
     var director:Director?=null
     var campus:String?=null
     var asistencias:Array<Practica>?=null
+    var incidencia:Incidencia?=null
+
 }

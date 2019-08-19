@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Incidencia {
 
+     var id:String?=null
      var campoClinico:String?=null
      var idProfesor:Int?=null
      var rol:String?=null

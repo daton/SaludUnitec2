@@ -60,8 +60,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             Log.d(TAG, "Message Notification Body: ${it.body}")
         }
 
+Globales.incidencia= Incidencia();
+        Globales.incidencia?.id=remoteMessage?.getData()?.get("id").toString()
+        Globales.incidencia?.idProfesor=remoteMessage?.getData()?.get("idProfesor")?.toInt()
+        Globales.incidencia?.nombre=remoteMessage?.getData()?.get("nombre").toString()
 
-        sendNotification(remoteMessage?.data?.get("title").toString()+" : "+remoteMessage?.getData()?.get("body"))
+        sendNotification(remoteMessage?.getData()?.get("idProfesor").toString()+" : "+remoteMessage?.getData()?.get("nombre"))
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -147,7 +151,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
 
             .setContentTitle(messageBody)
-            .setContentText("Aplicación de mensajes gratis")
+            .setContentText("Ciencias de la salud UNITEC")
             .setSmallIcon(R.drawable.ic_menu_send)
 
             .setColor(color)
