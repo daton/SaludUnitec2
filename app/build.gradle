@@ -10,8 +10,8 @@ android {
         applicationId "org.unitec.saludunitec2"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1014
-        versionName "1.0.1.4"
+        versionCode 1015
+        versionName "1.0.1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
