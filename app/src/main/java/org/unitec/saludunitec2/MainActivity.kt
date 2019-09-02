@@ -7,10 +7,24 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.android.material.textfield.TextInputEditText
+import com.mobsandgeeks.saripaar.ValidationError
+import com.mobsandgeeks.saripaar.Validator
+import com.mobsandgeeks.saripaar.annotation.Email
+import com.mobsandgeeks.saripaar.annotation.NotEmpty
+import com.mobsandgeeks.saripaar.annotation.Password
+import kotlinx.android.synthetic.main.activity_main.*
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Validator.ValidationListener {
+    @NotEmpty(message = "este campo es requerido")
+    @Email(message = "correo inválido")
+    private var email: TextInputEditText? = null
+
+    @NotEmpty(message = "es necesario el password")
+    @Password(min = 4, scheme = Password.Scheme.ANY, message = "NIP no válido")
+    private var password: TextInputEditText? = null
 
     var perfil= Perfil()
 
@@ -18,65 +32,52 @@ class MainActivity : AppCompatActivity() {
     var nip: String? = null
     var mensajeError: String? = null
 
+
+    //Probar validaciones
+    override fun onValidationFailed(errors: MutableList<ValidationError>?) {
+        //Aqui van las acciones  a tomar en caso de validaciones erroneas
+        //Malo
+        var mensa = "men"
+
+        for (error in errors!!) {
+            val view = error.view
+
+            mensa = error.getCollatedErrorMessage(applicationContext)
+            Toast.makeText(applicationContext, mensa, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onValidationSucceeded() {
+        //Aqui van acciones a tomar si la validación fue exitosa, por ejemplo navegacion a otro activity
+        //Ya quitamos todo del presenter solo invocamos la Tarea autenticar
+        //Un pequeño cambio
+
+        TareaAutenticar().execute(null, null, null);
+
+    }
+
+    ///////////////////////////////////////
+    //Acaba la validacion y comienza el oncreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         getSupportActionBar()?.hide();
-        //Ajustamos el spinner del pefil
-        //Ajustamos el spinner
-
-        var spinner = findViewById<Spinner>(R.id.spinnerPerfil)
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.perfil, android.R.layout.simple_spinner_item
-        )
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-// Apply the adapter to the spinner
-        spinner.adapter = adapter
-        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var item = parent?.getItemAtPosition(position)
-                //El siguiente funciona bien
-                //Toast.makeText(applicationContext,"Este es "+item,Toast.LENGTH_SHORT).show()
-            }
-        }
 
 
-        //   findViewById<Button>(R.id.botonRegistrarse).setOnClickListener {
-        //       var i = Intent(application, MainActivity::class.java);
-        //        startActivity(i);
-        //   }
 
+
+
+
+        var validator = Validator(this);
+        validator.setValidationListener(this);
+        email = textoemail
+        password = textonip
 
         findViewById<Button>(R.id.botonIngresar).setOnClickListener {
-            var item = spinner?.selectedItem
-            Toast.makeText(applicationContext, "el perfil es " + item, Toast.LENGTH_LONG).show()
-            if (item!!.equals("Coordinador")) {
-                // TareaAutenticar().execute(null, null, null);
-                perfil?.rol="coordinador"
-            }
-            if (item!!.equals("Profesor")) {
-                perfil?.rol="profesor"
 
-            }
-            if(item!!.equals("Director Académico")){
-                perfil?.rol="director-academico"
-            }
-            if(item!!.equals("Director Divisional")){
-                perfil?.rol="director-divisional"
-            }
-            if(item!!.equals("Dirección de Campos")){
-                perfil?.rol="direccion-campos"
-            }
+            validator.validate();
 
-            TareaAutenticar().execute(null, null, null);
+
 
         }
     }
@@ -174,7 +175,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    /********************************************************************************
+     * TERMINA TAREA AUTENTICACION
+     *************************************************************************************/
 
 
     /*

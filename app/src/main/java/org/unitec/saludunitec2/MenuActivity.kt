@@ -146,7 +146,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var item=        parent?.getItemAtPosition(position)
                 //El siguiente funciona bien
-                //Toast.makeText(applicationContext,"Este es "+item,Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"Este es "+item,Toast.LENGTH_SHORT).show()
+               if(item=="Otros") textoOtos.visibility=View.VISIBLE
+                else textoOtos.visibility=View.INVISIBLE
+
             }
 
         }
@@ -158,7 +161,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             // Initialize a new instance of
             val builder = AlertDialog.Builder(this@MenuActivity)
-                .setTitle("Segundo Momento")
+                .setTitle("Incidencia")
                 .setMessage("¿Deseas guardar esta incidencia?")
                 .setPositiveButton("SI"){dialog, which ->
 
@@ -660,6 +663,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             var item=   spinnerIncidencias?.selectedItem
             incidencia.nombre=item.toString()
+            if(incidencia.nombre=="Otros"){
+                if(textoOtos.text!=null)incidencia.nombre=     textoOtos.text.toString()
+              else incidencia.nombre="Otros"
+            }
             //    Toast.makeText(applicationContext,"Seleccionaste "+incidencia.nombre, Toast.LENGTH_SHORT).show();
 
 
