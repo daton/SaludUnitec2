@@ -146,7 +146,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 var item=        parent?.getItemAtPosition(position)
                 //El siguiente funciona bien
-                Toast.makeText(applicationContext,"Este es "+item,Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(applicationContext,"Este es "+item,Toast.LENGTH_SHORT).show()
                if(item=="Otros") textoOtos.visibility=View.VISIBLE
                 else textoOtos.visibility=View.INVISIBLE
 

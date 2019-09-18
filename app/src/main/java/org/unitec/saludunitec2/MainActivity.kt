@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), Validator.ValidationListener {
 
 
 
-                Toast.makeText(applicationContext, "El id de acceso es " + estatus.perfil?.campus+"", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, "El id de acceso es " + estatus.perfil?.+"", Toast.LENGTH_SHORT).show()
 
                 Globales.campus=estatus.perfil?.campus
                 var i = Intent(applicationContext, MenuActivity::class.java)

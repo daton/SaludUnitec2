@@ -12,6 +12,7 @@ class Practica {
      var turno: String? = null
      var semana: Int? = null
      var dia: Int? = null
+    var campus:String?=null
     var mes:Int?=null
     var diaMes:Int?=null
     var diaSemana:Int?=null
