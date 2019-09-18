@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity(), Validator.ValidationListener {
         override fun onPostExecute(result: Void?) {
             super.onPostExecute(result)
             nip = null
+
             if (!estatus.success) {
 
 
@@ -163,7 +164,9 @@ class MainActivity : AppCompatActivity(), Validator.ValidationListener {
 
             try {
                 nip = findViewById<EditText>(R.id.textonip).text.toString();
+              var  email=findViewById<EditText>(R.id.textoemail).text.toString()
                 perfil.nip=nip;
+                perfil.email=email
                 estatus.success=false
 
                 //Toast.makeText(applicationContext, "NIP de acceso " + nip +" y el rol es "+perfil?.rol, Toast.LENGTH_LONG).show()

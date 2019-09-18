@@ -7,6 +7,7 @@ class Perfil {
     var nip:String?=null
     var rol:String?=null
     var nombre:String?=null
+    var email:String?=null
     var paterno:String?=null
     var materno:String?=null
     var idCampoClinico:Int?=null

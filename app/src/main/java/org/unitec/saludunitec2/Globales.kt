@@ -1,8 +1,8 @@
 package org.unitec.saludunitec2
 
 object Globales {
- var url = "http://192.168.100.85:8080/api"
-  //var url="https://daton.herokuapp.com/api"
+ //var url = "http://192.168.100.85:8080/api"
+  var url="https://daton.herokuapp.com/api"
     var diaano=0
     var registrados=false
     var estatusPerfil:EstatusPerfil?=null
