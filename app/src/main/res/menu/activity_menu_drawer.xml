@@ -27,12 +27,14 @@
 
     </group>
 
-    <item android:title="Clínicas">
+    <item android:title="General">
         <menu>
+            <!--
             <item
                     android:id="@+id/reportes"
                     android:icon="@drawable/ic_menu_share"
                     android:title="Clínicas" />
+                    -->
 
             <item
                     android:id="@+id/inicio"
